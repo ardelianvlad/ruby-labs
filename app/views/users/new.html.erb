@@ -1,0 +1,13 @@
+<div id="clearance" class="sign-up">
+	  
+	<% if @user && @user.errors.any? %>
+		<% @user.errors.full_messages.each do |msg| %>
+			<div class="alert alert-danger text-center" role="alert">
+		  		<%= msg %>
+			</div>
+		<% end %>
+	<% end %>
+
+    <%= render partial: '/users/form' %>
+ 
+</div>

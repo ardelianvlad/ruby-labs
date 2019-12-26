@@ -1,0 +1,31 @@
+<h3>Create new product:</h3>
+
+<%= form_for :product, url: products_path do |f| %>
+	<% if @product.errors.any? %>
+		<% @product.errors.full_messages.each do |error_message| %>
+		<div class="alert alert-danger">
+			<%= error_message %>
+		</div>
+		<% end %>
+	<% end %>
+	<p>
+		Product title:<br>
+		<%= f.text_field(:title, {:class => 'form-control'}) %>
+	</p>
+	<p>
+		Product description:<br>
+		<%= f.text_area(:description, {:class => 'form-control'}) %>
+	</p>
+	<p>
+		Price:<br>
+		<%= f.text_field(:price, {:class => 'form-control'}) %>
+	</p>
+	<p>
+		<%= f.file_field :image, {:class => 'form-control'} %>
+	</p>
+
+
+	<p>
+		<%= f.submit({:class => 'btn btn-success'}) %>
+	</p>
+<% end %>

@@ -1,0 +1,15 @@
+<div id="clearance" class="password-reset auth-forms">
+
+  <%= form_for :password, url: passwords_path do |form| %>
+  <h1 class="h3 mb-3 font-weight-normal" style="text-align: center"> Password reset</h1>
+
+    <div class="text-field">
+      <%= t(".description") %>
+      <%= form.text_field :email, class: 'form-control' %>
+    </div>
+
+    <div class="submit-field">
+      <%= form.submit 'Submit', class: 'btn btn-primary btn-block', id: 'forgon-password-submit' %>
+    </div>
+  <% end %>
+</div>
