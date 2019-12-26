@@ -1,0 +1,17 @@
+<%= form_for :session, url: session_path do |form| %>
+    <div class="auth-forms">
+        <h1 class="h3 mb-3 font-weight-normal" style="text-align: center"> Sign in</h1>
+        <%= form.text_field :email, type: 'email', class: 'form-control', placeholder: 'Email-address' %>
+        <%= form.password_field :password, class: 'form-control', placeholder: 'Password' %>
+        
+        <%= form.submit 'Sign in', class: 'btn btn-success btn-block'%>
+        <%= link_to t(".forgot_password"), new_password_path %>
+        
+        <!-- <p>Don't have an account?</p>  -->
+        <% if Clearance.configuration.allow_sign_up? %>
+            <hr>
+            <%= link_to "Sign up New Account", sign_up_path, class: 'btn btn-primary btn-block' %>
+        <% end %>
+    </div>
+
+<% end %>

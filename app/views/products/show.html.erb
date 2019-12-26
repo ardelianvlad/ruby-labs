@@ -1,0 +1,54 @@
+  <div class="container">
+
+    <div class="row">
+      <!-- /.col-lg-3 -->
+
+      <div class="col-lg-12">
+
+        <div class="card mt-4">
+          <%= image_tag(@product.image) %> 
+          <div class="card-body">
+            <h3 class="card-title"><%= @product.title %></h3>
+            <h4>$ <%= @product.price %></h4>
+            <p class="card-text"><p><%= @product.description %></p></p>
+
+            <% if signed_in? -%>
+              <%= link_to "Edit product", edit_product_path(@product), :class => 'btn btn-warning' %>
+              <%= link_to "Delete", product_path(@product), method: :delete, data: {confirm: "Would you like to delete this product?"}, :class => 'btn btn-danger' %>
+            <% end %>
+            
+          </div>
+        </div>
+        <!-- /.card -->
+        <% if signed_in? -%>
+          <div class="card card-outline-secondary my-4">
+            <div class="card-header">
+              Product Reviews
+            </div>
+            <div class="card-body">
+              <% @product.reviews.each do |review| %>
+
+                <p><%= review.review_text %></p>
+                <small class="text-muted">Posted by <%= review.username %> on 3/1/17</small>
+                <hr>
+              <% end %>
+              <%= form_for([@product, @product.reviews.build]) do |f| %>
+                <p>
+                  Review:<br>
+                  <%= f.text_area(:review_text, {:class => 'form-control'}) %>
+                </p>
+                <p>
+                  <%= f.submit("Add review", {:class => 'btn btn-success'}) %>
+                </p>
+              <% end %>
+            </div>
+          </div>
+        <% end %>
+        <!-- /.card -->
+
+      </div>
+      <!-- /.col-lg-9 -->
+
+    </div>
+
+  </div>

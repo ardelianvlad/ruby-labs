@@ -1,0 +1,7 @@
+<div id="clearance" class="sign-in">
+
+	<%= content_tag(:div, flash[:alert], :id => "flash_alert", :class => 'alert alert-danger text-center', :role => 'alert') if flash[:alert] %>
+
+  	<%= render partial: '/sessions/form' %>
+  
+</div>
